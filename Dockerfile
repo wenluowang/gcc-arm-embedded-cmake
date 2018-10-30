@@ -16,6 +16,7 @@ RUN apt-get install -y \
                        gcc-arm-embedded \
                        libc++-dev \
                        lcov \
-                       cppcheck
+                       cppcheck \
+                       doxygen
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
