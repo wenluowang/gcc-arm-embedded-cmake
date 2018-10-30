@@ -13,6 +13,9 @@ RUN apt-get install -y \
                        build-essential \
                        cmake \
                        git \
-                       gcc-arm-embedded
+                       gcc-arm-embedded \
+                       libc++-dev \
+                       lcov \
+                       cppcheck
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
