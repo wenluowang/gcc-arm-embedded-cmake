@@ -1,23 +1,20 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
+LABEL maintainer="wenluo <406988832@qq.com>"
+LABEL Description="Image for building and debugging arm-embedded projects from git"
+WORKDIR /work
 
+ADD . /work
 
-ARG DEBIAN_FRONTEND=noninteractive
+# Install any needed packages specified in requirements.txt
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+# Development files
+      build-essential \
+      git \
+      bzip2 \
+      wget && \
+    apt-get clean
+RUN wget -qO- https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q3-update/+download/gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2 | tar -xj
 
-
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-
-RUN apt-get install -y \
-                       build-essential \
-                       cmake \
-                       git \
-                       libc++-dev \
-                       lcov \
-                       cppcheck 
- RUN dpkg --add-architecture i386 && \
-apt-get update && apt-get -y install build-essential vim-common wget git bzip2 make python libc6:i386 astyle clang cmake && \
-wget https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q3-update/+download/gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2 && \
-mkdir -p /usr/local/bin/ && \
-tar -xf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2 -C /usr/local/bin/ 
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ENV PATH "/work/gcc-arm-none-eabi-4_8-2014q3-20140805/bin:$PATH"
