@@ -12,7 +12,6 @@ RUN apt-get install -y \
                        cmake \
                        git \
                        libc++-dev \
-                       gcc-arm-embedded --version=4.8-2014-q3-update \
                        lcov \
                        cppcheck 
  RUN dpkg --add-architecture i386 && \
