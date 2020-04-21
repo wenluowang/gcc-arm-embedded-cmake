@@ -6,13 +6,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:gcc-arm-embedded/ppa
 
 RUN apt-get install -y \
                        build-essential \
                        cmake \
                        git \
                        libc++-dev \
+                       gcc-arm-embedded --version=4.8-2014-q3-update \
                        lcov \
                        cppcheck 
  RUN dpkg --add-architecture i386 && \
