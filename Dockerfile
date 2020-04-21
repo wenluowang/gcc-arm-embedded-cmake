@@ -15,7 +15,7 @@ RUN apt-get install -y \
                        build-essential \
                        cmake \
                        git \
-                       gcc-arm-embedded \
+                       gcc-arm-embedded=4.8 \
                        libc++-dev \
                        lcov \
                        cppcheck \
