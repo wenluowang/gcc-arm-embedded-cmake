@@ -13,7 +13,7 @@ RUN apt-get install -y \
                        build-essential \
                        cmake \
                        git \
-                       gcc-arm-embedded=4.9.3 \
+                       gcc-arm-embedded=4.9-2015-q3-update \
                        libc++-dev \
                        lcov \
                        cppcheck \
